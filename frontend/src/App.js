@@ -16,6 +16,7 @@ import {
   SkillsContent,
   ResumeContent,
   ContactContent,
+  LeetCodeContent,
   TrashContent,
 } from "./components/WindowContent";
 import { PROJECTS, DESKTOP_ITEMS, WINDOW_TITLES, REJECTED } from "./data/content";
@@ -103,6 +104,8 @@ function App() {
         return <ResumeContent />;
       case "contact":
         return <ContactContent />;
+      case "leetcode":
+        return <LeetCodeContent />;
       case "trash":
         return (
           <TrashContent

@@ -169,6 +169,22 @@ const ICONS = {
     ],
     palette: { K: "#2D2631", F: "#FFB6C1", W: "#FFF8F0" },
   },
+  leetcode: {
+    art: [
+      "..KKKKKKKK..",
+      ".KYYYYYYYYK.",
+      "KYKYYYYYYKYK",
+      "KYKYKYYKYKYK",
+      ".KYYYYYYYYK.",
+      "..KYYYYYYK..",
+      "...KYYYYK...",
+      "....KYYK....",
+      "..KKYYYYKK..",
+      ".KWWWWWWWWK.",
+      ".KKKKKKKKKK.",
+    ],
+    palette: { K: "#2D2631", Y: "#FFD93D", W: "#FFF8F0" },
+  },
   trash: {
     art: [
       "....KKKK....",
@@ -235,6 +251,7 @@ export const PROJECTS = [
 
 export const DESKTOP_ITEMS = [
   ...PROJECTS.map((p) => ({ id: p.id, label: p.title, icon: p.type })),
+  { id: "leetcode", label: "LeetCode", icon: "leetcode" },
   { id: "about", label: "About Me", icon: "about" },
   { id: "skills", label: "Tech Stack", icon: "skills" },
   { id: "resume", label: "Resume.txt", icon: "resume" },
@@ -250,6 +267,7 @@ export const WINDOW_TITLES = {
   skills: "Tech Stack",
   resume: "Resume.txt",
   contact: "Contact",
+  leetcode: "LeetCode",
   trash: "Trash — Rejected Concepts",
 };
 
@@ -280,35 +298,38 @@ export const SPEECH = [
   "Everything here runs on pastel and coffee.",
 ];
 
-export const RESUME_TEXT = `KASHVI KALRA — Creative Frontend Engineer
+export const RESUME_TEXT = `KASHVI KALRA — [Your Title]
 =======================================
-github.com/kashvi613  |  linkedin.com/in/kashvikalra613
+kashvikalra613@gmail.com
+linkedin.com/in/kashvikalra613  |  github.com/kashvi613
 leetcode.com/u/kashvikalra613
 
 SUMMARY
-Creative developer crafting 8-bit digital worlds and
-pixel-perfect web experiences. 6+ years turning coffee
-into interfaces.
+[2-3 lines about who you are and what you build]
 
 EXPERIENCE
-2023-now  Senior Frontend Engineer — Freelance
-2020-2023 UI Engineer — Pastel Systems Inc.
-2019-2020 Junior Dev — Startup Dungeon (survived)
+[Year]-[Year]  [Job Title] — [Company]
+  - [Achievement or responsibility]
+  - [Achievement or responsibility]
+
+EDUCATION
+[Year]-[Year]  [Degree] — [Institution]
 
 SKILLS
-React, TypeScript, CSS wizardry, Web Audio, Canvas,
-Node, FastAPI, Pixel Art, Chiptune.
+[Skill], [Skill], [Skill], [Skill]
 
 PROJECTS
-Cyber Quest, Chiptune Studio, Pixel Paint AI, Pastel SaaS
+[Project Name] — [one-line description]
+[Project Name] — [one-line description]
 
 ACHIEVEMENTS
-- Once fixed a bug by deleting node_modules (it worked)
-- 100/100 Lighthouse, 100/100 vibes
+- [Something you're proud of]
 `;
 
 export const TAGLINE = "Crafting 8-bit worlds & pixel-perfect web experiences.";
 export const NAME = "Kashvi Kalra";
+
+export const EMAIL = "kashvikalra613@gmail.com";
 
 export const LINKS = {
   github: "https://github.com/kashvi613",

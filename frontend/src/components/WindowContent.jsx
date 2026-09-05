@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PixelSprite } from "./PixelSprite";
-import { SKILLS, RESUME_TEXT, NAME, TAGLINE, LINKS, getIcon } from "../data/content";
+import { SKILLS, RESUME_TEXT, NAME, TAGLINE, LINKS, EMAIL, getIcon } from "../data/content";
 import { sfx } from "../utils/audioSynth";
 
 const Tag = ({ children, accent }) => (
@@ -129,36 +129,104 @@ export const ResumeContent = () => {
   );
 };
 
-export const ContactContent = () => (
-  <div data-testid="content-contact">
-    <h2 className="font-pixel text-sm text-[#2D2631] mb-3">SEND A SIGNAL</h2>
-    <p className="mb-4">
-      Got a project, a job, or just want to talk pixel art? Find Kashvi on any of these —
-      all inboxes lead to the same pastel desktop.
-    </p>
-    <div className="space-y-2">
-      {[
-        ["GITHUB", LINKS.github, "github", "#FFF8F0"],
-        ["LINKEDIN", LINKS.linkedin, "linkedin", "#B0E0E6"],
-        ["LEETCODE", LINKS.leetcode, "leetcode", "#FFF49C"],
-      ].map(([label, url, key, bg]) => (
+export const ContactContent = () => {
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    sfx.blip();
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+    } catch (e) { /* clipboard blocked */ }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1600);
+  };
+  return (
+    <div data-testid="content-contact">
+      <h2 className="font-pixel text-sm text-[#2D2631] mb-3">SEND A SIGNAL</h2>
+      <p className="mb-4">
+        Got a project, a job, or just want to talk pixel art? Find Kashvi on any of these —
+        all inboxes lead to the same pastel desktop.
+      </p>
+      <div className="border-2 border-[#2D2631] bg-[#FF9EC6] p-3 mb-3 flex items-center justify-between gap-2 flex-wrap shadow-[3px_3px_0_#2D2631]">
         <a
-          key={key}
-          data-testid={`contact-${key}-button`}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
+          data-testid="contact-email-link"
+          href={`mailto:${EMAIL}`}
           onClick={() => sfx.open()}
-          className="flex items-center justify-between gap-2 font-pixel text-[9px] px-4 py-3 border-2 border-[#2D2631] text-[#2D2631] shadow-[3px_3px_0_#2D2631] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
-          style={{ backgroundColor: bg }}
+          className="font-pixel text-[9px] text-[#2D2631] underline decoration-dotted break-all"
         >
-          <span>{label}</span>
-          <span className="text-[#6B5E73]">↗</span>
+          {EMAIL}
         </a>
-      ))}
+        <button
+          data-testid="contact-copy-button"
+          onClick={copy}
+          className="font-pixel text-[8px] px-3 py-1.5 bg-[#2D2631] text-[#FFF8F0] border-2 border-[#2D2631] shrink-0"
+        >
+          {copied ? "COPIED!" : "COPY"}
+        </button>
+      </div>
+      <div className="space-y-2">
+        {[
+          ["GITHUB", LINKS.github, "github", "#FFF8F0"],
+          ["LINKEDIN", LINKS.linkedin, "linkedin", "#B0E0E6"],
+          ["LEETCODE", LINKS.leetcode, "leetcode", "#FFF49C"],
+        ].map(([label, url, key, bg]) => (
+          <a
+            key={key}
+            data-testid={`contact-${key}-button`}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => sfx.open()}
+            className="flex items-center justify-between gap-2 font-pixel text-[9px] px-4 py-3 border-2 border-[#2D2631] text-[#2D2631] shadow-[3px_3px_0_#2D2631] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+            style={{ backgroundColor: bg }}
+          >
+            <span>{label}</span>
+            <span className="text-[#6B5E73]">↗</span>
+          </a>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
+
+export const LeetCodeContent = () => {
+  const icon = getIcon("leetcode");
+  return (
+    <div data-testid="content-leetcode">
+      <div className="flex items-start gap-4 mb-4">
+        <div className="p-2 border-2 border-[#2D2631] bg-[#FFF49C] shrink-0">
+          <PixelSprite art={icon.art} palette={icon.palette} size={4} />
+        </div>
+        <div>
+          <h2 className="font-pixel text-sm text-[#2D2631]">LEETCODE</h2>
+          <p className="text-[#6B5E73]">where the algorithms get pixelated</p>
+        </div>
+      </div>
+      <div className="grid grid-cols-3 gap-2 text-center mb-4">
+        {[
+          ["---", "SOLVED"],
+          ["---", "STREAK"],
+          ["---", "RATING"],
+        ].map(([n, l]) => (
+          <div key={l} className="border-2 border-[#2D2631] bg-[#FFF8F0] p-3 shadow-[3px_3px_0_#2D2631]">
+            <div className="font-pixel text-base text-[#2D2631]">{n}</div>
+            <div className="font-pixel text-[7px] text-[#6B5E73] mt-1">{l}</div>
+          </div>
+        ))}
+      </div>
+      <p className="mb-4 text-[#6B5E73] italic">Live stats coming soon — meanwhile, the trophy cabinet is this way:</p>
+      <a
+        data-testid="leetcode-profile-button"
+        href={LINKS.leetcode}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => sfx.open()}
+        className="inline-block font-pixel text-[9px] px-4 py-2 bg-[#FFD93D] text-[#2D2631] border-2 border-[#2D2631] shadow-[3px_3px_0_#2D2631] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+      >
+        ▶ VIEW PROFILE
+      </a>
+    </div>
+  );
+};
 
 export const TrashContent = ({ items, onEmpty, onRestore }) => {
   const [exploding, setExploding] = useState(false);

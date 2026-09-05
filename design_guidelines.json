@@ -1,0 +1,143 @@
+{
+  "project_info": {
+    "app_name": "Pixel Dev OS - Pixel-Art macOS Portfolio",
+    "app_type": "portfolio",
+    "target_audience": "Tech recruiters, creative directors, developers, and pixel art enthusiasts looking for an award-winning interactive desktop portfolio experience."
+  },
+  "theme": {
+    "mode": "pastel_retro_os",
+    "primary_gradient": "bg-gradient-to-br from-[#FFB6C1] via-[#FFDAB9] to-[#E6E6FA]",
+    "background_palette": {
+      "pink": "#FFB6C1",
+      "peach": "#FFDAB9",
+      "lavender": "#E6E6FA",
+      "mint": "#B2FBA5",
+      "sky": "#B0E0E6",
+      "yellow_sticky": "#FFF59D",
+      "window_bg": "#FAF8F5",
+      "window_header": "#EFEBE4",
+      "border_dark": "#2D2631",
+      "shadow_hard": "#1A151E"
+    }
+  },
+  "typography": {
+    "font_families": {
+      "headline_and_ui": "'Press Start 2P', cursive, monospace",
+      "reading_and_body": "'VT323', 'Silkscreen', 'Chivo', monospace"
+    },
+    "font_imports": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Silkscreen&display=swap",
+    "hierarchy": {
+      "window_title": "text-xs tracking-wider font-bold uppercase",
+      "heading_h1": "text-lg sm:text-xl font-bold tracking-tight text-[#2D2631]",
+      "heading_h2": "text-sm sm:text-base font-bold text-[#4A3E50]",
+      "body_text": "text-sm sm:text-base leading-relaxed text-[#332C37]",
+      "caption": "text-xs text-[#6B5E73]"
+    }
+  },
+  "colors": {
+    "palette": {
+      "desktop_gradient_from": "#FFC0CB",
+      "desktop_gradient_via": "#FFDAB9",
+      "desktop_gradient_to": "#E6E6FA",
+      "menu_bar_bg": "rgba(255, 248, 240, 0.85)",
+      "menu_bar_border": "#2D2631",
+      "menu_bar_text": "#2D2631",
+      "window_bg": "#FAF8F5",
+      "window_border": "#2D2631",
+      "window_titlebar": "#EADEC9",
+      "button_close": "#FF6B6B",
+      "button_minimize": "#FFD93D",
+      "button_maximize": "#6BCB77",
+      "sticky_note": "#FFF49C",
+      "sticky_border": "#D8C757",
+      "accent_purple": "#B185A7",
+      "accent_teal": "#79BAC1"
+    }
+  },
+  "layout_and_architecture": {
+    "boot_screen": {
+      "description": "Full viewport CRT power-on transition with retro pixel loading status, sound activation toggle prompt, and classic 8-bit boot chime.",
+      "components": "BootScreen.jsx"
+    },
+    "menu_bar": {
+      "description": "Top fixed macOS menu bar with pixel Apple logo, 'Pixel Dev', current window title, live 12-hour clock, sound toggle button, and theme/info controls.",
+      "style": "h-8 px-4 flex items-center justify-between border-b-2 border-[#2D2631] bg-[#FFF8F0]/90 backdrop-blur-md text-xs font-['Press_Start_2P'] z-50 select-none"
+    },
+    "desktop_canvas": {
+      "description": "Interactive grid container holding floating pixel clouds, rotatable sticky note tagline, desktop icons, pixel girl avatar standing above dock, and stackable window layer.",
+      "style": "relative w-full h-[calc(100vh-2rem)] overflow-hidden p-4 md:p-8"
+    },
+    "clouds_layer": {
+      "description": "Framer motion powered drifting pixel clouds across background sky layer.",
+      "image_asset": "https://images.unsplash.com/photo-1650963310446-011fc6a28367?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA0MTJ8MHwxfHNlYXJjaHwxfHxwaXhlbCUyMGFydCUyMHBhc3RlbCUyMGFuaW1lJTIwYWVzdGhldGljJTIwaWxsdXN0cmF0aW9ufGVufDB8fHx8MTc4ODU4Mjc3OXww&ixlib=rb-4.1.0&q=85"
+    },
+    "sticky_note": {
+      "description": "Rotated pixel-styled sticky note featuring tagline: 'Pixel Dev — Crafting 8-Bit Digital Worlds & Pixel-Perfect Web Experiences'. Allows user editing or dragging.",
+      "style": "bg-[#FFF49C] border-2 border-[#2D2631] shadow-[4px_4px_0px_#2D2631] p-4 rotate-[-2deg] max-w-xs"
+    },
+    "pixel_character": {
+      "description": "Animated pixel girl sprite positioned right above dock. Hovering or clicking displays funny interactive pixel speech bubbles (e.g. 'Welcome to my OS!', 'Need a dev? Double-click Resume!')."
+    },
+    "desktop_icons_grid": {
+      "description": "Icon grid with double-click / tap triggers to open windows. Includes custom 8-bit icons for 4 Projects, About, Skills, Contact, Resume, and Trash Can.",
+      "icons": [
+        {"id": "proj-1", "title": "Cyber Quest", "type": "game", "icon": "🎮"},
+        {"id": "proj-2", "title": "Chiptune Studio", "type": "music", "icon": "🎹"},
+        {"id": "proj-3", "title": "Pixel Paint AI", "type": "art", "icon": "🎨"},
+        {"id": "proj-4", "title": "Pastel SaaS", "type": "web", "icon": "⚡"},
+        {"id": "about", "title": "About Me", "type": "system", "icon": "👾"},
+        {"id": "skills", "title": "Tech Stack", "type": "system", "icon": "⚙️"},
+        {"id": "resume", "title": "Resume.pdf", "type": "doc", "icon": "📜"},
+        {"id": "contact", "title": "Contact", "type": "mail", "icon": "📮"},
+        {"id": "trash", "title": "Trash", "type": "easter_egg", "icon": "🗑️"}
+      ]
+    },
+    "window_management": {
+      "description": "Stackable, draggable macOS style windows managed by active z-index store. Features 8-bit titlebars, minimize, maximize, close actions, and smooth Framer Motion entrance/exit.",
+      "window_controls": "Red/Yellow/Green retro pixel buttons with hover press states."
+    },
+    "trash_easter_egg": {
+      "description": "'Rejected Concepts' window with funny fake rejected ideas (e.g., 'SaaS for Cats', 'VR Toothbrush', 'Crypto Potato'). Users can click 'Restore' or 'Empty Trash' with 8-bit particle explosion."
+    }
+  },
+  "sound_effects_system": {
+    "engine": "Web Audio API Synthesizer (Chiptune generator)",
+    "sounds": {
+      "boot_chime": "Major chord arpeggio (C5-E5-G5-C6) square wave with lowpass filter sweep",
+      "click": "Short 15ms high pitch pulse wave",
+      "window_open": "Ascending 3-note blip (C5, E5, G5)",
+      "window_close": "Descending 2-note blip (G5, C5)",
+      "trash_empty": "Noise burst synth with pitch slide down"
+    },
+    "audio_toggle": "Mute/Unmute button prominently placed in top menu bar."
+  },
+  "component_path": {
+    "main_app": "/app/frontend/src/App.js",
+    "boot_screen": "/app/frontend/src/components/BootScreen.jsx",
+    "menu_bar": "/app/frontend/src/components/MenuBar.jsx",
+    "desktop": "/app/frontend/src/components/Desktop.jsx",
+    "desktop_icon": "/app/frontend/src/components/DesktopIcon.jsx",
+    "mac_window": "/app/frontend/src/components/MacWindow.jsx",
+    "sticky_note": "/app/frontend/src/components/StickyNote.jsx",
+    "pixel_girl": "/app/frontend/src/components/PixelGirl.jsx",
+    "cloud_layer": "/app/frontend/src/components/CloudLayer.jsx",
+    "dock": "/app/frontend/src/components/Dock.jsx",
+    "trash_easter_egg": "/app/frontend/src/components/TrashWindow.jsx",
+    "audio_service": "/app/frontend/src/utils/audioSynth.js"
+  },
+  "instructions_to_main_agent": [
+    "Load 'Press Start 2P' and 'VT323' Google Fonts in index.html or index.css.",
+    "Implement Web Audio API synthesizer in src/utils/audioSynth.js to avoid relying on external sound assets that might fail to load.",
+    "Build a robust window manager state (activeWindowId, openWindows array, zIndexes map) in App.js or dedicated React state/context.",
+    "Make all windows draggable using mouse/touch coordinates or react-draggable / framer-motion drag props.",
+    "Ensure every interactive button, icon, window bar, close control, and sound toggle includes clear 'data-testid' attributes (e.g. data-testid='menu-bar-clock', data-testid='icon-proj-1', data-testid='window-close-button', data-testid='trash-easter-egg').",
+    "Add responsive fallbacks so mobile browsers render stacked windows gracefully without overflowing screen bounds.",
+    "Ensure smooth pixel shadow aesthetics with 'shadow-[4px_4px_0px_#2D2631]' and hard 2px solid '#2D2631' borders across windows and desktop items."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "No generic centered layouts; use authentic retro macOS 8-bit desktop aesthetics.",
+    "Do NOT use transparent backgrounds for window contents or menu dropdowns; use solid cream `#FAF8F5` or `#FFF8F0` with crisp border `#2D2631`.",
+    "Include high-quality 8-bit sound synth feedback for interactive clicks, drags, window opens, and boot screen.",
+    "Every key element MUST have a data-testid attribute for automated test suites."
+  ]
+}

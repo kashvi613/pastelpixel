@@ -1,0 +1,11 @@
+# Pixel Dev — Pixel-Art Portfolio OS
+
+A retro pixel-art portfolio styled as a macOS desktop, built by Pixel Dev, creative frontend engineer.
+
+## What this page offers
+- Boot-screen intro with 8-bit chiptune sounds (Web Audio API)
+- macOS-style desktop: menu bar with live clock, floating pixel clouds, draggable sticky note
+- Desktop icons for projects (Cyber Quest, Chiptune Studio, Pixel Paint AI, Pastel SaaS), About, Tech Stack, Resume, Contact
+- Draggable, stackable, minimizable macOS-style windows
+- Pixel girl character with speech bubbles standing above the dock
+- Trash can easter egg containing "Rejected Concepts"

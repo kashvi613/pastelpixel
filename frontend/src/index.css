@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cur-arrow: auto;
+  --cur-pointer: auto;
+}
+
+html.pixel-cursors,
+html.pixel-cursors * {
+  cursor: var(--cur-arrow);
+}
+
+html.pixel-cursors a,
+html.pixel-cursors button,
+html.pixel-cursors [data-testid^="icon-"],
+html.pixel-cursors [data-testid^="dock-"],
+html.pixel-cursors [data-testid="trash-easter-egg"],
+html.pixel-cursors [data-testid="pixel-girl"] {
+  cursor: var(--cur-pointer);
+}
+
+body {
+  margin: 0;
+  font-family: "VT323", monospace;
+  -webkit-font-smoothing: none;
+  overflow: hidden;
+}
+
+.font-pixel {
+  font-family: "Press Start 2P", monospace;
+}
+
+.font-terminal {
+  font-family: "VT323", monospace;
+}
+
+::selection {
+  background: #ff9ec6;
+  color: #2d2631;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+*::-webkit-scrollbar-track {
+  background: #efebe4;
+  border-left: 2px solid #2d2631;
+}
+*::-webkit-scrollbar-thumb {
+  background: #b185a7;
+  border: 2px solid #2d2631;
+}
+
+.scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(45, 38, 49, 0.045) 2px,
+    rgba(45, 38, 49, 0.045) 4px
+  );
+  mix-blend-mode: multiply;
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 61;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 62%, rgba(45, 38, 49, 0.14) 100%);
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s steps(1) infinite;
+}
+
+@layer base {
+  [data-debug-wrapper="true"] {
+    display: contents !important;
+  }
+}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PixelSprite } from "./PixelSprite";
-import { SKILLS, RESUME_TEXT, NAME, TAGLINE, getIcon } from "../data/content";
+import { SKILLS, RESUME_TEXT, NAME, TAGLINE, LINKS, getIcon } from "../data/content";
 import { sfx } from "../utils/audioSynth";
 
 const Tag = ({ children, accent }) => (
@@ -109,7 +109,7 @@ export const ResumeContent = () => {
     const blob = new Blob([RESUME_TEXT], { type: "text/plain" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "PixelDev_Resume.txt";
+    a.download = "KashviKalra_Resume.txt";
     a.click();
     URL.revokeObjectURL(a.href);
   };
@@ -129,52 +129,36 @@ export const ResumeContent = () => {
   );
 };
 
-export const ContactContent = () => {
-  const [copied, setCopied] = useState(false);
-  const copy = async () => {
-    sfx.blip();
-    try {
-      await navigator.clipboard.writeText("hello@pixeldev.os");
-    } catch (e) { /* clipboard blocked */ }
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1600);
-  };
-  return (
-    <div data-testid="content-contact">
-      <h2 className="font-pixel text-sm text-[#2D2631] mb-3">SEND A SIGNAL</h2>
-      <p className="mb-4">
-        Got a project, a job, or just want to talk pixel art? My inbox is always in pastel mode.
-      </p>
-      <div className="border-2 border-[#2D2631] bg-[#FFF49C] p-3 mb-4 flex items-center justify-between gap-2 flex-wrap shadow-[3px_3px_0_#2D2631]">
-        <span className="font-pixel text-[10px]">hello@pixeldev.os</span>
-        <button
-          data-testid="contact-copy-button"
-          onClick={copy}
-          className="font-pixel text-[8px] px-3 py-1.5 bg-[#2D2631] text-[#FFF8F0] border-2 border-[#2D2631]"
-        >
-          {copied ? "COPIED!" : "COPY"}
-        </button>
-      </div>
-      <div className="flex gap-3 flex-wrap">
+export const ContactContent = () => (
+  <div data-testid="content-contact">
+    <h2 className="font-pixel text-sm text-[#2D2631] mb-3">SEND A SIGNAL</h2>
+    <p className="mb-4">
+      Got a project, a job, or just want to talk pixel art? Find Kashvi on any of these —
+      all inboxes lead to the same pastel desktop.
+    </p>
+    <div className="space-y-2">
+      {[
+        ["GITHUB", LINKS.github, "github", "#FFF8F0"],
+        ["LINKEDIN", LINKS.linkedin, "linkedin", "#B0E0E6"],
+        ["LEETCODE", LINKS.leetcode, "leetcode", "#FFF49C"],
+      ].map(([label, url, key, bg]) => (
         <a
-          data-testid="contact-email-button"
-          href="mailto:hello@pixeldev.os"
+          key={key}
+          data-testid={`contact-${key}-button`}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={() => sfx.open()}
-          className="font-pixel text-[9px] px-4 py-2 bg-[#FF9EC6] text-[#2D2631] border-2 border-[#2D2631] shadow-[3px_3px_0_#2D2631] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+          className="flex items-center justify-between gap-2 font-pixel text-[9px] px-4 py-3 border-2 border-[#2D2631] text-[#2D2631] shadow-[3px_3px_0_#2D2631] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+          style={{ backgroundColor: bg }}
         >
-          ✉ SAY HELLO
+          <span>{label}</span>
+          <span className="text-[#6B5E73]">↗</span>
         </a>
-        <button
-          data-testid="contact-github-button"
-          onClick={() => sfx.click()}
-          className="font-pixel text-[9px] px-4 py-2 bg-[#FFF8F0] text-[#2D2631] border-2 border-[#2D2631] shadow-[3px_3px_0_#2D2631] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
-        >
-          GITHUB
-        </button>
-      </div>
+      ))}
     </div>
-  );
-};
+  </div>
+);
 
 export const TrashContent = ({ items, onEmpty, onRestore }) => {
   const [exploding, setExploding] = useState(false);

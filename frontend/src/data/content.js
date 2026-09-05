@@ -280,9 +280,10 @@ export const SPEECH = [
   "Everything here runs on pastel and coffee.",
 ];
 
-export const RESUME_TEXT = `PIXEL DEV — Creative Frontend Engineer
+export const RESUME_TEXT = `KASHVI KALRA — Creative Frontend Engineer
 =======================================
-Location: The Internet  |  hello@pixeldev.os
+github.com/kashvi613  |  linkedin.com/in/kashvikalra613
+leetcode.com/u/kashvikalra613
 
 SUMMARY
 Creative developer crafting 8-bit digital worlds and
@@ -307,4 +308,10 @@ ACHIEVEMENTS
 `;
 
 export const TAGLINE = "Crafting 8-bit worlds & pixel-perfect web experiences.";
-export const NAME = "Pixel Dev";
+export const NAME = "Kashvi Kalra";
+
+export const LINKS = {
+  github: "https://github.com/kashvi613",
+  linkedin: "https://www.linkedin.com/in/kashvikalra613/",
+  leetcode: "https://leetcode.com/u/kashvikalra613/",
+};

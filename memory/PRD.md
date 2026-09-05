@@ -28,7 +28,7 @@ Build a pixel-art portfolio website that looks like a macOS desktop. Pastel grad
 - SEO: Seo component, llms.txt, all data-testids
 
 ## Backlog
-- P0: Replace placeholder identity (name "Pixel Dev", projects, email) with real user content
+- P0: Replace the 4 sample projects with Kashvi's real projects (she'll say which to swap); add her email if she shares one
 - P1: Wallpaper picker (alternate pastel themes), menu-bar dropdown menus (File/Edit spoof)
 - P1: Mobile polish — full-screen windows by default on small screens
 - P2: Screensaver mode after idle, keyboard shortcuts (Ctrl+W close, arrows to move icons)

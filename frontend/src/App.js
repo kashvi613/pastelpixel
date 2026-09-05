@@ -123,14 +123,14 @@ function App() {
       onClick={() => setSelected(null)}
     >
       <Seo
-        title="Pixel Dev — Pixel-Art Portfolio OS"
-        siteName="Pixel Dev"
-        description="A retro pixel-art macOS-style portfolio. Boot the OS, double-click project icons, drag windows around, and dig through the trash for rejected concepts."
+        title="Kashvi Kalra — Pixel-Art Portfolio OS"
+        siteName="Kashvi Kalra"
+        description="A retro pixel-art macOS-style portfolio by Kashvi Kalra. Boot the OS, double-click project icons, drag windows around, and dig through the trash for rejected concepts."
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "Pixel Dev",
-          description: "Pixel-art macOS-style portfolio of Pixel Dev, creative frontend engineer.",
+          name: "Kashvi Kalra",
+          description: "Pixel-art macOS-style portfolio of Kashvi Kalra, creative frontend engineer.",
         }}
       />
 

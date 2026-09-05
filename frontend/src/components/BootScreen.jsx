@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { sfx } from "../utils/audioSynth";
 
 const LINES = [
-  "PIXEL DEV OS (TM) v2.6",
+  "KASHVI OS (TM) v2.6",
   "BIOS CHECK .............. OK",
   "MEMORY: 640K ............ OK",
   "LOADING PASTEL.SYS ...... OK",
